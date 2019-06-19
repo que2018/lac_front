@@ -4,8 +4,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { MenComponent } from './men/men.component';
 import { WomenComponent } from './women/women.component';
 
-import { PaginationsComponent } from './paginations.component';
-
 const routes: Routes = [
   {
     path: '',
@@ -15,14 +13,14 @@ const routes: Routes = [
     children: [
       {
         path: 'men',
-        component: MenComponent,
+        loadChildren: './men/men.module#MenModule',
         data: {
           title: 'Men'
         }
       },
       {
         path: 'women',
-        component: WomenComponent,
+        loadChildren: './men/men.module#MenModule',
         data: {
           title: 'Women'
         }
