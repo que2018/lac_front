@@ -1,8 +1,7 @@
 // Angular
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-
+import { MenComponent } from './men/men.component';
 import { WomenComponent } from './women/women.component';
 import { MenService } from '../../services/men.service';
 
@@ -17,7 +16,7 @@ import { PeopleRoutingModule } from './people-routing.module';
 		PeopleRoutingModule
 	],
 	declarations: [
-		WomenComponent
+		
 	],
 	providers: [
 		MenService

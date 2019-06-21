@@ -1,12 +1,13 @@
 <div *ngIf="showEditFlag">
-  <men-edit></men-edit>
+  <men-edit [manInfo]="selectedMan"></men-edit>
 </div>
 <div class="animated fadeIn" [@slideUp]="animateFlag" [@slideLeftRight]="animateFlag">
   <div class="row">
     <div class="col-lg-12">
       <div class="card">
         <div class="card-header">
-          <i class="fa fa-align-justify"></i>Men List</div>
+          <i class="fa fa-align-justify"></i>Men List
+		</div>
         <div class="card-body">
 		  <table class="table">
 		    <thead>
@@ -18,15 +19,15 @@
 			  </tr>
 		    </thead>
 		    <tbody>
-			  <tr *ngFor="let result of menList">
-			    <td>{{result.name}}</td>
-			    <td>{{result.date_added}}</td>
+			  <tr *ngFor="let man of men">
+			    <td>{{man.name}}</td>
+			    <td>{{man.date_added}}</td>
 			    <td>
-				  <span *ngIf="result.status == 1" class="badge badge-success">Active</span>
-				  <span *ngIf="result.status == 0" class="badge badge-secondary">Inactive</span>				
+				  <span *ngIf="man.status == 1" class="badge badge-success">Active</span>
+				  <span *ngIf="man.status == 0" class="badge badge-secondary">Inactive</span>				
 				</td>
 				<td>
-				  <span (click)="showEdit(result)">edit</span>
+				  <span class="edit" (click)="showEdit(man)">edit</span>
 				</td>
 			  </tr>
 		    </tbody>

@@ -10,7 +10,7 @@
             <div class="col-sm-12">
               <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" placeholder="enter name">
+                <input type="text" class="form-control" id="name" value="{{manInfo.name}}" placeholder="enter name">
               </div>
             </div>
           </div>
@@ -18,10 +18,10 @@
             <div class="col-sm-12">
               <div class="form-group">
                 <label for="status">Status</label>
-				<select class="form-control" id="status">			
-				  <option>enable</option>
-				  <option>disable</option>
-				</select>              
+				<select [(ngModel)]="manInfo.status" class="form-control" id="status">
+                  <option value="1">{{1 | AppPipeStatus}}</option>
+                  <option value="0">{{0 | AppPipeStatus}}</option>
+                </select>
 			  </div>
             </div>
           </div>

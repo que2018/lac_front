@@ -10,31 +10,11 @@ import {MenService} from '../../../../services/men.service';
 
 export class MenEditComponent {
 	
-	public menList;
-	public totalNum = 0;
-	public totalPage = 0;
-	
-	@Input() public filterOptions: Array<any>;
+    @Input() public manInfo = [];
 	
 	constructor(private menService: MenService) {}
 	
-	ngOnInit() {		
-		this.getMenList();
+	ngOnInit() {
+		
 	}
-	
-	private getMenList() {
-        this.menService.getMenList(this.filterOptions).subscribe(
-            returnData => {
-                if ( returnData.code === 1000 ) {
-                    this.menList = returnData.men_list;
-                }
-            },
-            errorData => {
-                console.log('===> get men list error: ' + errorData);
-            },
-            () => {
-                //this._setPaginationOptions();
-            }
-        );
-    }
 }
