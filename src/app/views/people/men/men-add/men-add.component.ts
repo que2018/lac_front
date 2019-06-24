@@ -1,38 +1,20 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, Input, OnChanges, OnInit} from '@angular/core';
+import {fadeInOut} from '../../../animation/animation';
 import {MenService} from '../../../../services/men.service';
 
 @Component({
 	selector: 'men-add',
-	templateUrl: 'men-add.component.html'
+	templateUrl: 'men-add.component.html',
+	animations: [fadeInOut]
 })
 
 export class MenAddComponent {
 	
-	public menList;
-	public totalNum = 0;
-	public totalPage = 0;
-	
-	@Input() public filterOptions: Array<any>;
+    @Input() public manInfo = [];
 	
 	constructor(private menService: MenService) {}
 	
-	ngOnInit() {		
-		this.getMenList();
+	ngOnInit() {
+		
 	}
-	
-	private getMenList() {
-        this.menService.getMenList(this.filterOptions).subscribe(
-            returnData => {
-                if ( returnData.code === 1000 ) {
-                    this.menList = returnData.men_list;
-                }
-            },
-            errorData => {
-                console.log('===> get men list error: ' + errorData);
-            },
-            () => {
-                //this._setPaginationOptions();
-            }
-        );
-    }
 }

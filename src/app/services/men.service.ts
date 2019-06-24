@@ -13,4 +13,14 @@ export class MenService extends AppBaseService {
         const postListUrl =  'http://localhost/church/men_list.php';
         return this.sendRequest('post', postListUrl, data);
     }
+	
+	public getMenInfo(data: {}): Observable<any> {
+        const postListUrl =  'http://localhost/church/men_info.php';
+        return this.sendRequest('post', postListUrl, data);
+    }
+	
+	public saveMenInfo(data: {}): Observable<any> {
+        const postListUrl =  'http://localhost/church/men_save.php';
+        return this.sendRequest('post', postListUrl, data);
+    }
 }

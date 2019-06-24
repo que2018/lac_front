@@ -1,3 +1,9 @@
+.btn-add {
+	float: right;
+}
 .edit {
 	cursor: pointer;
+}
+.pagination {
+	float: left;
 }

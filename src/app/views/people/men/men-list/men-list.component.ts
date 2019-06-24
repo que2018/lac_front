@@ -17,9 +17,10 @@ export class MenListComponent {
 	public totalPage = 0;
 	
 	public animateFlag: String = 'in';
+	public showAddFlag: Boolean = false;
 	public showEditFlag: Boolean = false;
 	
-	public selectedMan = [];
+	public selectedManId = 0;
 	
 	@Input() public filterOptions: Array<any>;
 	
@@ -45,9 +46,14 @@ export class MenListComponent {
         );
     }
 	
-	showEdit(selectedMan: Array<any>) {
+	showAdd() {
+		this.animateFlag = 'out';
+        this.showAddFlag = true;
+    }
+	
+	showEdit(selectedManId: number) {
 		this.animateFlag = 'out';
         this.showEditFlag = true;
-		this.selectedMan = selectedMan;
+		this.selectedManId = selectedManId;
     }
 }
