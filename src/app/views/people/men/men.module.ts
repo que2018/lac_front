@@ -4,6 +4,8 @@ import {CommonModule} from '@angular/common';
 
 import {AppMainPipeModule} from '../../pipe/app-main-pipe.module';
 
+import {UtilModule} from '../../util/util.module';
+
 
 import {MenComponent} from './men.component';
 import {MenRoutingModule} from './men-routing.module';
@@ -16,6 +18,7 @@ import {MenListComponent} from './men-list/men-list.component';
 		CommonModule,
 		FormsModule,
 		AppMainPipeModule,
+		UtilModule,
 		MenRoutingModule
     ],
     declarations: [

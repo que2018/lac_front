@@ -40,7 +40,7 @@ export class MenEditComponent {
     }
 	
 	private getMenInfo() {
-        this.menService.getMenInfo(this.menId).subscribe(
+        this.menService.getMenInfo(this.manId).subscribe(
             returnData => {
                 if ( returnData.code === 1000 ) {
                     this.manInfo = returnData.man_info;

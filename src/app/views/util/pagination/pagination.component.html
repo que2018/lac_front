@@ -1,0 +1,22 @@
+<div class="app-pagination">
+  <ul class="pagination">
+    <li *ngIf="showPrevGroup" class="page-item">
+      <a (click)="goToFirstPage()" class="page-link">|<</a>
+    </li>
+    <li *ngIf="showPrevGroup" class="page-item">
+      <a (click)="goToPrevPage()" class="page-link"><</a>
+    </li>
+    <li *ngFor="let pageNum of pageLists" class="page-item" [class.active]="pageNum === currentPage">
+      <a (click)="selectedPage(pageNum)" class="page-link">{{pageNum}}</a>
+    </li>
+    <li *ngIf="showNextGroup" class="page-item">
+      <a (click)="goToNextPage()" class="page-link">></a>
+    </li>
+    <li *ngIf="showNextGroup" class="page-item">
+      <a (click)="goToLastPage()" class="page-link">>|</a>
+    </li>
+  </ul>
+  <div class="pagination-footnote pull-right">
+    <label>Total Records: {{totalNum}}, Total Pages: {{lastPage}} </label>
+  </div>
+</div>

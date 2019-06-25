@@ -16,6 +16,8 @@ export class MenListComponent {
 	public totalNum = 0;
 	public totalPage = 0;
 	
+	public paginationOptions = {};
+
 	public animateFlag: String = 'in';
 	public showAddFlag: Boolean = false;
 	public showEditFlag: Boolean = false;
@@ -35,13 +37,18 @@ export class MenListComponent {
             returnData => {
                 if ( returnData.code === 1000 ) {
                     this.men = returnData.men_list;
+					
+					this.paginationOptions = {};
+					this.paginationOptions['current_page'] = 1;
+					this.paginationOptions['total_page'] = returnData.total_page;
+					this.paginationOptions['total_num'] = returnData.total_num;
                 }
             },
             errorData => {
                 console.log('===> get men list error: ' + errorData);
             },
             () => {
-                //this._setPaginationOptions();
+                this._setPaginationOptions();
             }
         );
     }

@@ -1,0 +1,23 @@
+.pagination {
+  margin: 0px;
+}
+
+.pagination-span {
+    background: rgba(255, 255, 255, 0);
+    top: 0px;
+    color: white;
+}
+
+.pagination-span:hover {
+    cursor: pointer;
+    color: white;
+    background: rgba(39, 130, 255, 0.6);
+}
+
+.pagination-active {
+    background: rgba(39, 130, 255, 0.6);
+}
+
+.pagination-footnote {
+  margin-right:10px;
+}
