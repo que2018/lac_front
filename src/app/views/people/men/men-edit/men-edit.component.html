@@ -5,30 +5,41 @@
         <div class="card-header">
           <strong>Edit Men</strong>
         </div>
-        <div class="card-body">
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" value="{{manInfo.name}}" placeholder="enter name" />
+		<form [formGroup]="manForm" class="card-form form-horizontal">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="name">Name</label>
+				  <input type="text" formControlName="name" class="form-control" id="name" placeholder="enter name" />
+                </div>
+              </div>
+            </div>
+			<div class="row">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="date_added">Date Added</label>
+				  <input type="text" formControlName="date_added" class="form-control" id="date-added" placeholder="enter date added" />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="status">Status</label>
+				  <select formControlName="status" class="form-control" id="status">
+                    <option value="1">{{1 | AppPipeStatus}}</option>
+                    <option value="0">{{0 | AppPipeStatus}}</option>
+                  </select>
+			    </div>
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="form-group">
-                <label for="status">Status</label>
-				<select [(ngModel)]="manInfo.status" class="form-control" id="status">
-                  <option value="1">{{1 | AppPipeStatus}}</option>
-                  <option value="0">{{0 | AppPipeStatus}}</option>
-                </select>
-			  </div>
-            </div>
+		  <div class="card-footer">
+            <button type="submit" class="btn btn-sm btn-primary" (click)="saveMenInfo()"><i class="fa fa-dot-circle-o"></i>Save</button>
+            <button type="reset" class="btn btn-sm btn-danger" (click)="closeEdit()"><i class="fa fa-ban"></i>Return</button>
           </div>
-        </div>
-		<div class="card-footer">
-          <button type="submit" class="btn btn-sm btn-primary" (click)="saveMenInfo()"><i class="fa fa-dot-circle-o"></i>Save</button>
-        </div>
+		</form>
       </div>
     </div>
   </div>

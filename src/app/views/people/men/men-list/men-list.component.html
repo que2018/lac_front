@@ -1,4 +1,4 @@
-<div class="animated fadeIn" [@slideLeftRight]="animateFlag">
+<div class="animated fadeIn" *ngIf="showListFlag">
   <div class="row">
     <div class="col-lg-12">
       <div class="card">
@@ -30,26 +30,16 @@
 		    </tbody>
 		  </table>
 		  <div>
-		  <app-pagination [paginationOptions]="paginationOptions"></app-pagination>
-
-		  
-		    <!--<ul class="pagination">
-		      <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-		      <li class="page-item active"><a class="page-link" href="#">1</a></li>
-		      <li class="page-item"><a class="page-link" href="#">2</a></li>
-		      <li class="page-item"><a class="page-link" href="#">3</a></li>
-		      <li class="page-item"><a class="page-link" href="#">4</a></li>
-		      <li class="page-item"><a class="page-link" href="#">Next</a></li>
-		    </ul>
-		  </div>
-		  <button type="button" class="btn btn-sm btn-primary btn-add" (click)="showAdd()">add man</button>-->
+		    <app-pagination [paginationOptions]="paginationOptions"></app-pagination>
+		    <!--<button type="button" class="btn btn-sm btn-primary btn-add" (click)="showAdd()">add man</button>-->
+          </div>
         </div>
-      </div>
+	  </div>
     </div>
   </div>
 </div>
 <div *ngIf="showEditFlag">
-  <men-edit [manId]="selectedManId"></men-edit>
+  <men-edit [manId]="selectedManId" (closeEditFlag)="closeEdit($event)"></men-edit>
 </div>
 <div *ngIf="showAddFlag">
   <men-add></men-add>

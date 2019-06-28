@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 
 import {AppMainPipeModule} from '../../pipe/app-main-pipe.module';
@@ -17,6 +17,7 @@ import {MenListComponent} from './men-list/men-list.component';
     imports: [
 		CommonModule,
 		FormsModule,
+		ReactiveFormsModule,
 		AppMainPipeModule,
 		UtilModule,
 		MenRoutingModule

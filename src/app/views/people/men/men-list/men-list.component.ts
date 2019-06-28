@@ -21,6 +21,7 @@ export class MenListComponent {
 	public animateFlag: String = 'in';
 	public showAddFlag: Boolean = false;
 	public showEditFlag: Boolean = false;
+	public showListFlag: Boolean = true;
 	
 	public selectedManId = 0;
 	
@@ -46,9 +47,6 @@ export class MenListComponent {
             },
             errorData => {
                 console.log('===> get men list error: ' + errorData);
-            },
-            () => {
-                this._setPaginationOptions();
             }
         );
     }
@@ -59,8 +57,13 @@ export class MenListComponent {
     }
 	
 	showEdit(selectedManId: number) {
-		this.animateFlag = 'out';
         this.showEditFlag = true;
+		this.showListFlag = false;
 		this.selectedManId = selectedManId;
+    }
+	
+	closeEdit($event) {
+        this.showEditFlag = false;
+		this.showListFlag = true;
     }
 }
