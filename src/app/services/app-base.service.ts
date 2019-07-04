@@ -7,66 +7,60 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AppBaseService {
-  public baseUrl: String = '';
-  public languageBaseUrl: String = 'assets/language/';
+	public baseUrl: String = '';
 
-  constructor(
-    private _baseHttp: Http
-  ) {
-      //this.baseUrl = GlobalVariables.WEBSITE_SERVER_URL;
-  }
+	constructor(private http: Http) {
+		//this.baseUrl = GlobalVariables.WEBSITE_SERVER_URL;
+	}
 
-public getObservableData(responseData: Response) {
-    // const body = responsedata.json();
+	public getObservableData(responseData: Response) {
+		return responseData.json();
+	}
 
-    return responseData.json();
-    // return body;
-  }
+	public errorHandlerObservable(errorData: Response | any) {
+		let errorMessage: String = '';
 
-  public errorHandlerObservable(errorData: Response | any) {
-    let errorMessage: String = '';
+		if(errorData instanceof Response) {
+			const body = errorData.json() || '';
+			const err = body.err || JSON.stringify(body);
+			errorMessage = `${errorData.status} - ${errorData.statusText || ''} - ${err}`;
+		} else {
+			errorMessage = errorData.message ? errorData.message : errorData.toString();
+		}
 
-    if ( errorData instanceof Response ) {
-      const body = errorData.json() || '';
-      const err = body.err || JSON.stringify(body);
-      errorMessage = `${errorData.status} - ${errorData.statusText || ''} - ${err}`;
+		return Observable.throw(errorMessage);
+	}
 
-    } else {
-      errorMessage = errorData.message ? errorData.message : errorData.toString();
-    }
+	public setHeaderOptions(): RequestOptions {
+		const headers = new Headers({'Content-Type': 'application/json'});
+		return new RequestOptions({ headers: headers, method: 'post'});
+	}
 
-    return Observable.throw(errorMessage);
-  }
+    public sendRequest(requestType: string, requestUrl: string, data = {}): Observable<any> {
+		switch(requestType){
+			case('get'):
+				return this.http.get(requestUrl)
+				.map(this.getObservableData)
+				.catch(this.errorHandlerObservable);
 
-  public setHeaderOptions(): RequestOptions {
-    const headers = new Headers({'Content-Type': 'application/json'});
-    return new RequestOptions({ headers: headers, method: 'post'});
+			case('post'):
+				console.log("in the send request .. ");
+				console.log(data);
+				console.log(JSON.stringify(data));
+				
+				return this.http.post(requestUrl, JSON.stringify(data), this.setHeaderOptions())
+				.map(this.getObservableData)
+				.catch(this.errorHandlerObservable);
+		  
+			case('put'):
+				return this.http.put(requestUrl, JSON.stringify(data), this.setHeaderOptions())
+				.map(this.getObservableData)
+				.catch(this.errorHandlerObservable);
 
-  }
-
-     public sendRequest(requestType: string, requestUrl: string, data = {}): Observable<any> {
-
-    switch ( requestType ) {
-      case ('get'):
-        return this._baseHttp.get(requestUrl)
-          .map(this.getObservableData)
-          .catch(this.errorHandlerObservable);
-
-      case ('post'):
-        return this._baseHttp.post(requestUrl, JSON.stringify(data), this.setHeaderOptions())
-          .map(this.getObservableData)
-          .catch(this.errorHandlerObservable);
-
-      case ('put'):
-        return this._baseHttp.put(requestUrl, JSON.stringify(data), this.setHeaderOptions())
-          .map(this.getObservableData)
-          .catch(this.errorHandlerObservable);
-
-      case ('delete'):
-        return this._baseHttp.delete(requestUrl, this.setHeaderOptions())
-          .map(this.getObservableData)
-          .catch(this.errorHandlerObservable);
-    }
-  }
-
+			case('delete'):
+				return this.http.delete(requestUrl, this.setHeaderOptions())
+				.map(this.getObservableData)
+				.catch(this.errorHandlerObservable);
+		}
+	}
 }

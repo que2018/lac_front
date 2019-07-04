@@ -17,14 +17,14 @@
 		    </thead>
 		    <tbody>
 			  <tr *ngFor="let man of men">
-			    <td>{{man.name}}</td>
-			    <td>{{man.date_added}}</td>
+			    <td>{{man.username}}</td>
+			    <td>{{man.dateAdded}}</td>
 			    <td>
 				  <span *ngIf="man.status == 1" class="badge badge-success">Active</span>
 				  <span *ngIf="man.status == 0" class="badge badge-secondary">Inactive</span>				
 				</td>
 				<td>
-				  <button type="button" class="btn btn-sm btn-primary btn-edit" (click)="showEdit(man.manId)">edit</button>
+				  <button type="button" class="btn btn-sm btn-primary btn-edit" (click)="showEdit(man.maleId)">edit</button>
 				</td>
 			  </tr>
 		    </tbody>

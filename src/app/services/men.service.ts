@@ -10,7 +10,7 @@ export class MenService extends AppBaseService {
     }
 
     public getMenList(data: {}): Observable<any> {
-        const postListUrl =  'http://localhost/church/men_list.php';
+        const postListUrl =  'http://localhost:8080/male/list';
         return this.sendRequest('post', postListUrl, data);
     }
 	
@@ -19,7 +19,7 @@ export class MenService extends AppBaseService {
         return this.sendRequest('post', postListUrl, data);
     }
 	
-	public saveMenInfo(data: {}): Observable<any> {
+	public saveMenInfo(data: {}): Observable<any> {		
         const postListUrl =  'http://localhost/church/men_save.php';
         return this.sendRequest('post', postListUrl, data);
     }

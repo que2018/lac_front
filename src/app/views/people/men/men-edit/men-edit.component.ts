@@ -15,6 +15,8 @@ export class MenEditComponent {
 	@Output() public closeEditFlag = new EventEmitter();
 	
 	public manForm: FormGroup;
+	
+	public manInfo = {};
 
 	constructor(
 		private menService: MenService,
@@ -31,11 +33,17 @@ export class MenEditComponent {
 		});
 	}
 	
-	saveMenInfo() {
-		this.menService.saveMenInfo(this.manInfo).subscribe(
+	saveMenInfo() {		
+		var manInfo = {
+			name: this.manForm.controls['name'].value,
+			date_added: this.manForm.controls['date_added'].value,
+			status: this.manForm.controls['status'].value
+		}
+	
+		this.menService.saveMenInfo(this.manForm.value).subscribe(
             returnData => {
-                if ( returnData.code === 1000 ) {
-                   
+                if(returnData.code === 1000) {
+                   this.closeEditFlag.emit(false);
                 }
             },
             errorData => {

@@ -36,8 +36,11 @@ export class MenListComponent {
 	private getMenList() {
         this.menService.getMenList(this.filterOptions).subscribe(
             returnData => {
-                if ( returnData.code === 1000 ) {
-                    this.men = returnData.men_list;
+                if ( returnData.code === 200 ) {
+                    this.men = returnData.data.list;
+					
+					console.log("safe and sound ... ");
+					console.log(this.men);
 					
 					this.paginationOptions = {};
 					this.paginationOptions['current_page'] = 1;
