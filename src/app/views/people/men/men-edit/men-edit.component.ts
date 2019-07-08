@@ -59,11 +59,13 @@ export class MenEditComponent {
 	private getMenInfo() {
         this.menService.getMenInfo(this.manId).subscribe(
             returnData => {
-                if ( returnData.code === 1000 ) {
-                    var manInfo = returnData.man_info;
+                if (returnData.code === 200) {
+                    var manInfo = returnData.data;
 					
-					this.manForm.controls['name'].setValue(manInfo.name);
-					this.manForm.controls['date_added'].setValue(manInfo.date_added);
+					console.log(manInfo);
+					
+					this.manForm.controls['name'].setValue(manInfo.username);
+					this.manForm.controls['date_added'].setValue(manInfo.dateAdded);
 					this.manForm.controls['status'].setValue(manInfo.status);
                 }
             },

@@ -10,13 +10,13 @@ export class MenService extends AppBaseService {
     }
 
     public getMenList(data: {}): Observable<any> {
-        const postListUrl =  'http://localhost:8080/male/list';
-        return this.sendRequest('post', postListUrl, data);
+        const url =  'http://localhost:8080/male/list';
+        return this.sendRequest('post', url, data);
     }
 	
-	public getMenInfo(data: {}): Observable<any> {
-        const postListUrl =  'http://localhost/church/men_info.php';
-        return this.sendRequest('post', postListUrl, data);
+	public getMenInfo(MaleId: number): Observable<any> {
+        const url =  'http://localhost:8080/male/get/' + String(MaleId);
+        return this.sendRequest('get', url);
     }
 	
 	public saveMenInfo(data: {}): Observable<any> {		
