@@ -27,22 +27,26 @@ export class MenEditComponent {
 		this.getMenInfo();
 		
 		this.manForm = new FormGroup({
-			name: new FormControl(''),
-			date_added: new FormControl(''),
+			username: new FormControl(''),
+			firstname: new FormControl(''),
+			lastname: new FormControl(''),
+			dateAdded: new FormControl(''),
 			status: new FormControl(0)
 		});
 	}
 	
 	saveMenInfo() {		
 		var manInfo = {
-			name: this.manForm.controls['name'].value,
-			date_added: this.manForm.controls['date_added'].value,
+			username: this.manForm.controls['username'].value,
+			firstname: this.manForm.controls['firstname'].value,
+			lastname: this.manForm.controls['lastname'].value,
+			dateAdded: this.manForm.controls['dateAdded'].value,
 			status: this.manForm.controls['status'].value
 		}
 	
-		this.menService.saveMenInfo(this.manForm.value).subscribe(
+		this.menService.saveMenInfo(this.manId, this.manForm.value).subscribe(
             returnData => {
-                if(returnData.code === 1000) {
+                if(returnData.code === 200) {
                    this.closeEditFlag.emit(false);
                 }
             },
@@ -60,12 +64,12 @@ export class MenEditComponent {
         this.menService.getMenInfo(this.manId).subscribe(
             returnData => {
                 if (returnData.code === 200) {
-                    var manInfo = returnData.data;
-					
-					console.log(manInfo);
-					
-					this.manForm.controls['name'].setValue(manInfo.username);
-					this.manForm.controls['date_added'].setValue(manInfo.dateAdded);
+                    var manInfo = returnData.data;	
+										
+					this.manForm.controls['username'].setValue(manInfo.username);
+					this.manForm.controls['firstname'].setValue(manInfo.firstname);
+					this.manForm.controls['lastname'].setValue(manInfo.lastname);
+					this.manForm.controls['dateAdded'].setValue(manInfo.dateAdded);
 					this.manForm.controls['status'].setValue(manInfo.status);
                 }
             },
