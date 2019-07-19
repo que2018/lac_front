@@ -1,18 +1,18 @@
 import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {fadeInOut} from '../../../animation/animation';
-import {MenService} from '../../../../services/men.service';
+import {MaleService} from '../../../../services/male.service';
 
 @Component({
-	selector: 'men-add',
-	templateUrl: 'men-add.component.html',
+	selector: 'male-add',
+	templateUrl: 'male-add.component.html',
 	animations: [fadeInOut]
 })
 
-export class MenAddComponent {
+export class MaleAddComponent {
 	
     @Input() public manInfo = [];
 	
-	constructor(private menService: MenService) {}
+	constructor(private maleService: MaleService) {}
 	
 	ngOnInit() {
 		

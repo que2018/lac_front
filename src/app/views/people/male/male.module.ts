@@ -7,11 +7,11 @@ import {AppMainPipeModule} from '../../pipe/app-main-pipe.module';
 import {UtilModule} from '../../util/util.module';
 
 
-import {MenComponent} from './men.component';
-import {MenRoutingModule} from './men-routing.module';
-import {MenAddComponent} from './men-add/men-add.component';
-import {MenEditComponent} from './men-edit/men-edit.component';
-import {MenListComponent} from './men-list/men-list.component';
+import {MaleComponent} from './male.component';
+import {MaleRoutingModule} from './male-routing.module';
+import {MaleAddComponent} from './male-add/male-add.component';
+import {MaleEditComponent} from './male-edit/male-edit.component';
+import {MaleListComponent} from './male-list/male-list.component';
 
 @NgModule({
     imports: [
@@ -20,17 +20,17 @@ import {MenListComponent} from './men-list/men-list.component';
 		ReactiveFormsModule,
 		AppMainPipeModule,
 		UtilModule,
-		MenRoutingModule
+		MaleRoutingModule
     ],
     declarations: [
-        MenComponent,
-		MenAddComponent,
-		MenEditComponent,
-        MenListComponent
+        MaleComponent,
+		MaleAddComponent,
+		MaleEditComponent,
+        MaleListComponent
     ],
     providers: [
        
     ]
 })
 
-export class MenModule {}
+export class MaleModule {}

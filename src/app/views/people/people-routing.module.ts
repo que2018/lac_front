@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
-import { MenComponent } from './men/men.component';
+import { MaleComponent } from './male/male.component';
 import { WomenComponent } from './women/women.component';
 
 const routes: Routes = [
@@ -12,15 +11,15 @@ const routes: Routes = [
     },
     children: [
       {
-        path: 'men',
-        loadChildren: './men/men.module#MenModule',
+        path: 'male',
+        loadChildren: './male/male.module#MaleModule',
         data: {
-          title: 'Men'
+          title: 'Male'
         }
       },
       {
         path: 'women',
-        loadChildren: './men/men.module#MenModule',
+        loadChildren: './male/male.module#MaleModule',
         data: {
           title: 'Women'
         }
