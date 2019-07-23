@@ -39,9 +39,6 @@ export class MaleListComponent {
                 if ( returnData.code === 200 ) {
                     this.male = returnData.data.list;
 					
-					console.log("safe and sound ... ");
-					console.log(this.male);
-					
 					this.paginationOptions = {};
 					this.paginationOptions['current_page'] = 1;
 					this.paginationOptions['total_page'] = returnData.total_page;
@@ -68,5 +65,7 @@ export class MaleListComponent {
 	closeEdit($event) {
         this.showEditFlag = false;
 		this.showListFlag = true;
+		
+		this.getMaleList();
     }
 }

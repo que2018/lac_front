@@ -45,8 +45,8 @@ export const navItems: NavData[] = [
     icon: 'icon-people',
     children: [
       {
-        name: 'Men',
-        url: '/people/men',
+        name: 'Male',
+        url: '/people/male',
         icon: 'icon-symbol-male'
       },
 	  {
