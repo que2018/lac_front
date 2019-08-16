@@ -54,6 +54,8 @@ export class MaleListComponent {
 	showAdd() {
 		this.animateFlag = 'out';
         this.showAddFlag = true;
+		this.showEditFlag = false;
+		this.showListFlag = false;
     }
 	
 	showEdit(selectedManId: number) {
