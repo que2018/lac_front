@@ -43,7 +43,7 @@
   <male-edit [manId]="selectedManId" (closeEditFlag)="closeEdit($event)"></male-edit>
 </div>
 <div *ngIf="showAddFlag">
-  <male-add></male-add>
+  <male-add (closeAddFlag)="closeAdd($event)"></male-add>
 </div>
 
 

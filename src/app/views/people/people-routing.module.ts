@@ -3,9 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { MaleComponent } from './male/male.component';
 import { WomenComponent } from './women/women.component';
 
+import {AuthGuard} from '../../services/auth-guard.service';
+
+
 const routes: Routes = [
   {
     path: '',
+	canActivate: [AuthGuard],
     data: {
       title: 'People'
     },

@@ -19,6 +19,11 @@ export class MaleService extends AppBaseService {
         return this.sendRequest('get', url);
     }
 	
+	public addMaleInfo(data: {}): Observable<any> {		
+        const url = 'http://localhost:8080/male/add/';
+        return this.sendRequest('post', url, data);
+    }
+	
 	public saveMaleInfo(maleId: number, data: {}): Observable<any> {		
         const url = 'http://localhost:8080/male/update/' + String(maleId);
         return this.sendRequest('post', url, data);

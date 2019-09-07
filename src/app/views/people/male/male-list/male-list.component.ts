@@ -64,7 +64,16 @@ export class MaleListComponent {
 		this.selectedManId = selectedManId;
     }
 	
+	closeAdd($event) {
+		this.showAddFlag = false;
+        this.showEditFlag = false;
+		this.showListFlag = true;
+		
+		this.getMaleList();
+    }
+	
 	closeEdit($event) {
+		this.showAddFlag = false;
         this.showEditFlag = false;
 		this.showListFlag = true;
 		
