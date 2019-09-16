@@ -1,11 +1,8 @@
-// Angular
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MaleComponent } from './male/male.component';
 import { WomenComponent } from './women/women.component';
 import { MaleService } from '../../services/male.service';
-
-// Components Routing
 import { MaleModule } from './male/male.module';
 import { PeopleRoutingModule } from './people-routing.module';
 
