@@ -10,7 +10,7 @@ export class LoginService extends AppBaseService {
     }
 
 	public login(data: {}): Observable<any> {		
-        const url = 'http://localhost:8080/login/';
+        const url = 'http://localhost:8080/admin/login/';
         return this.sendRequest('post', url, data);
     }
 }

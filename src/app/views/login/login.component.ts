@@ -1,4 +1,5 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { LoginService } from '../../services/login.service';
 
@@ -12,6 +13,7 @@ export class LoginComponent {
 	public loginForm: FormGroup;
 
 	constructor(
+		private router: Router,
 		private loginService: LoginService,
 		private _formBuilder: FormBuilder
 	) {}
@@ -31,9 +33,8 @@ export class LoginComponent {
 	
 		this.loginService.login(this.loginForm.value).subscribe(
             returnData => {
-                if(returnData.code === 200) {
-					
-					
+                if(returnData.code == 200) {
+					this.router.navigate(['/people/male']);
 				
                 }
             },
