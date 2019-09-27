@@ -21,7 +21,7 @@ export class LoginComponent {
 	ngOnInit() {		
 		this.loginForm = new FormGroup({
 			username: new FormControl(''),
-			password: new FormControl(''),
+			password: new FormControl('')
 		});
 	}	
 	
@@ -35,7 +35,6 @@ export class LoginComponent {
             returnData => {
                 if(returnData.code == 200) {
 					this.router.navigate(['/people/male']);
-				
                 }
             },
             errorData => {

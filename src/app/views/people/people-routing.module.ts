@@ -3,12 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { MaleComponent } from './male/male.component';
 import { WomenComponent } from './women/women.component';
 
-//import {AuthGuard} from '../../services/auth-guard.service';
+import {Auth} from '../../services/auth.service';
 
 const routes: Routes = [
   {
     path: '',
-	//canActivate: [AuthGuard],
+	canActivate: [Auth],
     data: {
       title: 'People'
     },
